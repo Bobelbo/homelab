@@ -14,4 +14,4 @@ services:
       - DNS_SERVER_LOG_FOLDER_PATH=/var/log/technitium/dns
     volumes:
       - ./config:/etc/dns
-      - logs:/var/log/technitium/dns
+      - ./logs:/var/log/technitium/dns
