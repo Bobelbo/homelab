@@ -18,6 +18,8 @@ services:
       - OT_THREAD_IF=wpan0
       - OT_LOG_LEVEL=7
       - OT_WEB_LISTEN_ADDR=0.0.0.0
+      - OT_REST_LISTEN_ADDR=0.0.0.0
+      - OT_REST_LISTEN_PORT=8081
       - NAT64=0                  
       - DNS64=0
       - FIREWALL=0
