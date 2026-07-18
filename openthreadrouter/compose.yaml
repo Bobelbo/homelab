@@ -1,0 +1,28 @@
+services:
+  otbr:
+    container_name: openthread-border-router
+    image: openthread/border-router:latest
+    hostname: otbr
+    restart: unless-stopped
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
+      - /dev/net/tun:/dev/net/tun
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+      - net.ipv4.conf.all.forwarding=1
+      - net.ipv6.conf.all.forwarding=1
+    environment:
+      - OT_RCP_DEVICE=spinel+hdlc+uart:///dev/ttyACM0?uart-baudrate=1000000
+      - RADIO_URL=spinel+hdlc+uart:///dev/ttyACM0?uart-baudrate=1000000
+      - OT_INFRA_IF=wlan0
+      - OT_THREAD_IF=wpan0
+      - OT_LOG_LEVEL=7
+      - OT_WEB_LISTEN_ADDR=0.0.0.0
+      - NAT64=0                  
+      - DNS64=0
+      - FIREWALL=0
+    volumes:
+      - ./data:/data

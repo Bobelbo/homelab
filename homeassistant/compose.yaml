@@ -9,7 +9,6 @@ services:
       - /etc/localtime:/etc/localtime:ro
     depends_on:
       - matter-server
-
     environment:
       - TZ=Canada/Eastern
 
